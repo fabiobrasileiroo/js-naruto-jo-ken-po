@@ -1,0 +1,104 @@
+<!-- video terminando e estilizando visuais -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- framework -->
+  <link rel="stylesheet" href="./src/styles/containers_and_frames.css">
+  <link rel="stylesheet" href="./src/styles/buttons.css">
+  <!--reset css  -->
+  <link rel="stylesheet" href="./src/styles/reset.css">
+  <!-- main css -->
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <!-- Font press Start 2P -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="./src/assets/favicon/Favicon.ico" type="image/x-icon">
+  <title>Naruto Jo-ken-po Edition</title>
+  
+  <body>
+    <div class="bg-video">
+      <video class="video" autoplay loop muted >
+        <source src=" ./src/assets/video/narutoSasukeFight.mp4" type="video/mp4" />
+      </video>
+      <div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="container__left
+      framed-golden-2">
+      <div class="score_box frame">
+        <span id="score_points">Win : 0 | Lose: 0</span>
+      </div>
+      <div class="menu_avatar">
+        <img id="card-image">
+      </div>
+      <div class="card-details frame">
+        <p id="card-name">Selecione</p>
+        <p id="card-type">uma carta</p>
+      </div>
+    </div>
+    <div class="volume-controls" >
+      <button onclick="increaseVolume()">+</button>
+      <button onclick="decreaseVolume()">-</button>
+      <button id="ligar" onclick="toggleMute()">🔊</button>
+    </div>
+    <div class="container__right">
+      <div class="card-box__container">
+        <div class="card-box framed" id="computer-cards"></div>
+        <div class="card-versus__container">
+          <div class="versus-top">
+            <div class="card-infield">
+              <img id="player-field-card" height="180px" width="125px" />
+            </div>
+            <img height="55px" id="kunai" src="./src/assets/icons/kunai-fight.png">
+            <div class="card-infield">
+              <img id="computer-field-card" height="180px" width="125px" />
+            </div>
+          </div>
+          <div class="versus-bottom">
+            <button id="next-duel" class="rpgui-button" onclick="resetDuel()">GANHOU</button>
+          </div>
+        </div>
+        <div class="card-box framed" id="player-cards"></div>
+      </div>
+    </div>
+  </div>
+  <script src="./src/scripts/engine.js" defer></script>
+  <script>
+       // Select the video element
+      var video = document.querySelector('.video');
+
+      video.volume = 0.1;
+
+      function decreaseVolume() {
+          video.volume -= 0.1;
+      }
+
+      function increaseVolume() {
+        if (video.volume < 1) {
+          video.volume += 0.1;
+        }
+      }
+
+      let som = document.getElementById("ligar")
+      function toggleMute() {
+        video.muted = !video.muted;
+        if (!video.muted) {
+          video.volume += 0.1;
+        }
+        som.textContent = video.muted ? "🔊" : "🔇"
+      }
+  </script>
+  <style>
+    button { 
+      width: auto;
+      height:  auto;
+    }
+  </style>
+</body>
+
+</html>

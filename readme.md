@@ -1,5 +1,6 @@
 # NARUTO | Jo-ken-po Edition
-![Captura de tela de 2024-01-20 17-26-43](https://github.com/fabiobrasileiroo/js-naruto-jo-ken-po/assets/99563281/0f36ffd3-3af9-4bd7-9dd4-3b67424f161d)
+
+![Captura de tela de 2024-01-20 17-28-36](https://github.com/fabiobrasileiroo/js-naruto-jo-ken-po/assets/99563281/92099ad2-eabb-43ab-b0d2-f4d85533bd1f)
 
 Jogo de jokenpo que criei para entender conceitos de lógica de programação aplicados a jogos
 

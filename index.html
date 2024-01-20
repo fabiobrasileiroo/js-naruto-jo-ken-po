@@ -87,8 +87,8 @@
       let som = document.getElementById("ligar")
       function toggleMute() {
         video.muted = !video.muted;
-        if (!video.muted) {
-          video.volume += 0.1;
+        if (video.muted) {
+          video.volume = 0.1;
         }
         som.textContent = video.muted ? "🔊" : "🔇"
       }

@@ -91,12 +91,39 @@ async function setCardsField(cardId) {
   state.fieldCards.player.src = cardData[cardId].img
   state.fieldCards.computer.src = cardData[computerCardId].img
 
-  // let duelResults = await checkDuelResults(cardId, computerCadId)
+  let duelResults = await checkDuelResults(cardId, computerCardId)
 
-  // await updateScore()
-  // await drawButton(duelResults)
+  await updateScore()
+  await drawButton(duelResults)
 
 }
+
+async function drawButton(text) {
+  state.actions.button.innerText = text
+  state.actions.button.style.display = "block"
+}
+async function updateScore() {
+  state.score.scoreBox.innerText = `Win: ${state.score.playerScore} | Lose: ${state.score.computerScore}`
+}
+async function checkDuelResults(playerCardId, computerCardId) {
+  let duelResults = "draw"
+  let playerCard = cardData[playerCardId]
+
+  if(playerCard.winOf.includes(computerCardId)) {
+    duelResults = "win"
+    await playAudio(duelResults)
+    state.score.playerScore++
+  }
+
+  if(playerCard.LoseOf.includes(computerCardId)) {
+    duelResults = "lose"
+    await playAudio(duelResults)
+    state.score.computerScore++
+  }
+
+  return duelResults
+}
+
 async function removeAllCadsImages() {
   let { computerBox, player1Box} = state.playerSides
   let imgElements = computerBox.querySelectorAll("img")
@@ -112,6 +139,7 @@ async function drawSelectCard(index) {
   state.cardSprites.avatar.src = cardData[index].img
    state.cardSprites.avatar.style.width = novaLargura + "px";
   state.cardSprites.avatar.style.height = novaAltura + "px";
+  state.cardSprites.avatar.style.borderRadius = "6px"
 
   state.cardSprites.name.innerText = cardData[index].name
   state.cardSprites.type.innerText = "Attibute: " + cardData[index].type
@@ -121,9 +149,22 @@ async function drawCards(cardNumbers, fieldSide) {
   for(let i = 0; i < cardNumbers; i++) {
     const randomIdCard = await getRandomCardId()
     const cardImage = await createCardImage(randomIdCard, fieldSide)
-    console.log(cardImage)
     document.getElementById(fieldSide).appendChild(cardImage)
   }
+}
+
+async function resetDuel() {
+  state.cardSprites.avatar.src = ""
+  state.actions.button.style.display = "none"
+
+  state.fieldCards.player.style.display = "none"
+  state.fieldCards.computer.style.display = "none"
+  init()
+}
+
+async function playAudio(status) {
+  const audio = new Audio(`./src/assets/audios/${status}.wav`) 
+  audio.play()
 }
 
 function  init() {

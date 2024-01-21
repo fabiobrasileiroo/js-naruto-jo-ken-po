@@ -142,11 +142,11 @@ a:hover {
 .versus-bottom {
   margin-top: 1rem;
 }
-@-moz-document url-prefix() {
+/* @-moz-document url-prefix() {
   .versus-bottom button {
     margin-top: 5rem;
   }
-}
+} */
 
 #next-duel {
   display: none;

@@ -1,6 +1,14 @@
 body {
   cursor: url("../assets/cursor/cursoNaruto\ \(4\).png"), default;
 }
+
+button,
+a,
+img:hover,
+button,
+a:hover {
+  cursor: url("../assets/cursor/cursoNaruto\ \(3\).png"), auto;
+}
 .bg-video {
   position: absolute;
   z-index: -2;

@@ -88,18 +88,41 @@ async function setCardsField(cardId) {
   state.fieldCards.player.style.display = "block"
   state.fieldCards.computer.style.display = "block"
 
-  state.fieldCards.player.src = cardData[cardId].img
-  state.fieldCards.computer.src = cardData[computerCardId].img
+  await hiddenCArdDetails()
+
+  await drawCardsInField(cardId, computerCardId)
 
   let duelResults = await checkDuelResults(cardId, computerCardId)
-
+  
   await updateScore()
   await drawButton(duelResults)
+  
+}
 
+async function drawCardsInField(cardId, computerCardId) {
+  state.fieldCards.player.src = cardData[cardId].img
+  state.fieldCards.computer.src = cardData[computerCardId].img
+  
+}
+
+async function ShowHiddenCardFieldsImages(value) {
+  if(value === true) {
+    state.fieldCards.player.style.display = "block"
+    state.fieldCards.computer.style.display = "block"
+  }
+  if(value === false) {
+    state.fieldCards.player.style.display = "none"
+    state.fieldCards.computer.style.display = "none"
+  }
+}
+async function hiddenCArdDetails() {
+  state.cardSprites.avatar.src = ""
+  state.cardSprites.name.innerText = ""
+  state.cardSprites.type.innerText = ""
 }
 
 async function drawButton(text) {
-  state.actions.button.innerText = text
+  state.actions.button.innerText = text.toUpperCase()
   state.actions.button.style.display = "block"
 }
 async function updateScore() {
@@ -111,16 +134,14 @@ async function checkDuelResults(playerCardId, computerCardId) {
 
   if(playerCard.winOf.includes(computerCardId)) {
     duelResults = "win"
-    await playAudio(duelResults)
     state.score.playerScore++
   }
 
   if(playerCard.LoseOf.includes(computerCardId)) {
     duelResults = "lose"
-    await playAudio(duelResults)
     state.score.computerScore++
   }
-
+  await playAudio(duelResults)
   return duelResults
 }
 
@@ -133,16 +154,24 @@ async function removeAllCadsImages() {
   imgElements.forEach((img)=> img.remove())
 }
 async function drawSelectCard(index) {
-  const novaLargura = 200; // Substitua pelo valor desejado em pixels
+const novaLargura = 200; // Substitua pelo valor desejado em pixels
   const novaAltura = 200; // Substitua pelo valor desejado em pixels
 
-  state.cardSprites.avatar.src = cardData[index].img
-   state.cardSprites.avatar.style.width = novaLargura + "px";
-  state.cardSprites.avatar.style.height = novaAltura + "px";
-  state.cardSprites.avatar.style.borderRadius = "6px"
+  if (cardData[index].img) {
+    state.cardSprites.avatar.src = cardData[index].img;
+  } else {
+    // Set a default image or hide the element
+    state.cardSprites.avatar.src = "./src/assets/icons/default-avatar.png";
+    // Alternatively, you can hide the element
+    // state.cardSprites.avatar.style.display = "none";
+  }
 
-  state.cardSprites.name.innerText = cardData[index].name
-  state.cardSprites.type.innerText = "Attibute: " + cardData[index].type
+  state.cardSprites.avatar.style.width = novaLargura + "px";
+  state.cardSprites.avatar.style.height = novaAltura + "px";
+  state.cardSprites.avatar.style.borderRadius = "6px";
+
+  state.cardSprites.name.innerText = cardData[index].name;
+  state.cardSprites.type.innerText = "Attribute: " + cardData[index].type; 
 }
 
 async function drawCards(cardNumbers, fieldSide) {
@@ -164,10 +193,14 @@ async function resetDuel() {
 
 async function playAudio(status) {
   const audio = new Audio(`./src/assets/audios/${status}.wav`) 
-  audio.play()
+  try{
+    audio.play()
+  } catch {
+  }
 }
 
-function  init() {
+function init() {
+   ShowHiddenCardFieldsImages(false)
   drawCards(5, state.playerSides.player1)
   drawCards(5, state.playerSides.computer)
 }

@@ -89,7 +89,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-items: center;
   justify-content: space-between;
   height: 6rem;
   width: 100%;
@@ -113,9 +112,13 @@
 .card-versus__container{
   display: flex;
   flex-direction: column;
+  /* justify-items: center;
+  align-content: center; */
+  /* gostei do efeito dela se mexer */
+  justify-content: center;
+  align-items: center;
   padding-top: 0.1rem;
   height: 300px;
-  margin-top: 5rem;
 }
 
 .versus-top,
@@ -144,6 +147,8 @@
 
 .card-infield {
   height: 11.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.441);
+  border-radius: 6px;
   width: 8rem;
   border-radius: 8px;
 }
@@ -155,3 +160,22 @@
 .card:hover {
   transform: scale(1.2);
 }
+
+
+/* Optional: Style for default avatar image */
+#card-image[src=""] {
+  position: relative;;
+}
+
+#card-image[src=""]::before {
+  content: 'E';
+  color: #D27D2C;
+  position: absolute;
+  background-color: #D27D2C;
+  top: 1px;
+  padding: 1px;
+  left: 1px;
+  border-radius: 6px;
+}
+
+

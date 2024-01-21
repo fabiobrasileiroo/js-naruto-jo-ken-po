@@ -34,7 +34,7 @@
         <span id="score_points">Win : 0 | Lose: 0</span>
       </div>
       <div class="menu_avatar">
-        <img id="card-image">
+        <img id="card-image"  >
       </div>
       <div class="card-details frame">
         <p id="card-name">Selecione</p>
@@ -52,11 +52,11 @@
         <div class="card-versus__container">
           <div class="versus-top">
             <div class="card-infield">
-              <img id="player-field-card" height="180px" width="125px" />
+              <img id="player-field-card" style="border-radius: 6px;" height="180px" width="125px" />
             </div>
             <img height="55px" id="kunai" src="./src/assets/icons/kunai-fight.png">
             <div class="card-infield">
-              <img id="computer-field-card" height="180px" width="125px" />
+              <img id="computer-field-card" style="border-radius: 6px;" height="180px" width="125px" />
             </div>
           </div>
           <div class="versus-bottom">
@@ -93,12 +93,6 @@
         som.textContent = video.muted ? "🔊" : "🔇"
       }
   </script>
-  <style>
-    button { 
-      width: auto;
-      height:  auto;
-    }
-  </style>
 </body>
 
 </html>

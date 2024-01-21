@@ -31,7 +31,7 @@ const cardData = [
     type:  "Paper",
     img: `${pathImages}narutoStorm.jpeg`,
     winOf: [1],
-    LoseOf: [2],
+    LoseOf: [2,3],
   },
   {
     id:1, 
@@ -46,9 +46,26 @@ const cardData = [
     name: "Minato",
     type:  "Scissors",
     img: `${pathImages}Minato.jpeg`,
-    winOf: [0],
+    winOf: [0,4],
     LoseOf: [1],
-  }
+  },
+  {
+    id:3, 
+    name: "Madara",
+    type:  "Scissors",
+    img: `${pathImages}madara.jpeg`,
+    winOf: [0,4],
+    LoseOf: [1],
+  },
+    {
+    id:4, 
+    name: "Naruto mode full",
+    type:  "Paper",
+    img: `${pathImages}narutoStorm.jpeg`,
+    winOf: [1],
+    LoseOf: [2,3],
+  },
+  
 ]
 
 const players = {

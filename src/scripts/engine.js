@@ -49,22 +49,22 @@ const cardData = [
     winOf: [0,4],
     LoseOf: [1],
   },
-  {
-    id:3, 
-    name: "Madara",
-    type:  "Scissors",
-    img: `${pathImages}madara.jpeg`,
-    winOf: [0,4],
-    LoseOf: [1],
-  },
-    {
-    id:4, 
-    name: "Naruto mode full",
-    type:  "Paper",
-    img: `${pathImages}narutoStorm.jpeg`,
-    winOf: [1],
-    LoseOf: [2,3],
-  },
+  // {
+  //   id:3, 
+  //   name: "Madara",
+  //   type:  "Scissors",
+  //   img: `${pathImages}madara.jpeg`,
+  //   winOf: [0,4],
+  //   LoseOf: [1],
+  // },
+  //   {
+  //   id:4, 
+  //   name: "Naruto mode full",
+  //   type:  "Paper",
+  //   img: `${pathImages}narutoStorm.jpeg`,
+  //   winOf: [1],
+  //   LoseOf: [2,3],
+  // },
   
 ]
 
